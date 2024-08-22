@@ -1,84 +1,38 @@
-table {
-    
-    background-color: white;
-    color: white;
-    width: 100%;
-
-}
-
 body {
 
-    justify-items: center;
-
-}
-
-.buttonExcluir {
-
-    background-color: red;
-    color: black;
-    border: 1px solid white;
-
-}
-
-.buttonEditar {
-
-    background-color: yellow;
-    color: black;
-    border: 1px solid white;
-    transition-delay: 1ms;
-
-}
-
-form button {
-
-    background: linear-gradient(to right, black, purple);
-    color: white;
-    border-radius: 10px;
     width: 100%;
-    height: 40px;
-    font-size: large;
-
-}
-
-form {
-
-    width: 50%;
+    height: 100vh;
+    margin: 0%;
+    background: linear-gradient(to bottom, black, indigo);
+    text-align: center;
 
 }
 
 a {
 
-    background-color: black;
-    color: white;
+    text-decoration: none;
+    border: 1px solid white;
     padding: 10px;
-    border-radius: 5px;
+    border-radius: 2px;
+    color: aqua;
+
+}
+
+h1 {
+
+    color: white;
+    margin-top: 20px;   
+
+}
+
+header {
+
+    height: 200px;
+
+}
+
+ul {
+
     text-decoration: none;
-
-}
-
-.apadrao {
-
-    text-decoration: none;
-    border: none;
-    background: none;
-
-}
-
-tr td {
-
-    color: black;
-
-}
-
-
-.buttonEditar:hover {
-
-    background-color: white;
-
-}
-
-.buttonExcluir:hover {
-
-    background-color: white;
 
 }

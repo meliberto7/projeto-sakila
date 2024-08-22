@@ -7,13 +7,17 @@
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <title>Lista dos Filmes</title>
         <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
-        <link rel="stylesheet" href="./Styles/style.css">
+        <link rel="stylesheet" href="./Styles/styleLista.css">
 
     </head>
     <body>
 
-        <h1>Listagem dos Filmes</h1>
-
+        <header>
+            <div>
+                <h1>Listagem dos Filmes</h1>
+            </div>
+        </header>
+        
         <a href="./sakila">Voltar</a>
         <br>
         <br>
@@ -40,8 +44,10 @@
                         <a class="apadrao" href="./editar?filme=${filme.id_filme}">
                             <button class="buttonEditar">Editar</button>
                         </a>
-                        <button class="buttonExcluir">Excluir</button>
-                        
+                            <a class="apadrao" href="./excluir?filme=${filme.id_filme}">
+                            <button class="buttonExcluir">Excluir</button>   
+                        </a>
+
                     </td>
                 </tr>
                 </c:forEach>

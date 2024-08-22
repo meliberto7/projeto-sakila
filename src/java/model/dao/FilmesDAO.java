@@ -111,11 +111,7 @@ public class FilmesDAO {
             stmt.setString(1, filme.getTitulo());
             stmt.setString(2, filme.getDescricao());
             stmt.setInt(3, filme.getAno());
-            stmt.setInt(4, filme.getId_filme());
-            
-            System.out.println(filme.getTitulo());
-            System.out.println(filme.getId_filme());
-            System.out.println("zé");
+            stmt.setInt(4, filme.getId_filme());    
             
             stmt.executeUpdate();
             
@@ -128,6 +124,29 @@ public class FilmesDAO {
             e.printStackTrace();
         }
         return very;
+    }
+    
+    public boolean excluir(int id) {
+        
+        try{
+            
+            Connection conexao = Conexao.conectar();
+            PreparedStatement stmt = conexao.prepareStatement("DELETE FROM film WHERE film_id = ?");
+            
+            stmt.setInt(1, id);
+            
+            stmt.executeUpdate();
+            
+            stmt.close();
+            conexao.close();
+            
+            return true;
+            
+        }catch(SQLException e){
+            e.printStackTrace();
+        }
+        
+       return false; 
     }
     
 }

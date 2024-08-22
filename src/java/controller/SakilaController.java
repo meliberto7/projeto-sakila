@@ -14,7 +14,7 @@ import model.bean.Filmes;
 import model.dao.FilmesDAO;
 
 
-@WebServlet(name = "SakilaController", urlPatterns = {"/SakilaController", "/sakila", "/listarFilmes", "/cadastrarFilme", "/editar"})
+@WebServlet(name = "SakilaController", urlPatterns = {"/SakilaController", "/sakila", "/listarFilmes", "/cadastrarFilme", "/editar", "/excluir"})
 public class SakilaController extends HttpServlet {
 
 
@@ -48,6 +48,10 @@ public class SakilaController extends HttpServlet {
                 editar(request, response);
                 break;
                 
+            case "/excluir":
+                excluir(request, response);
+                break;
+    
             default:
                 System.out.println("Erro ao localizar página");
                 break;
@@ -76,6 +80,22 @@ public class SakilaController extends HttpServlet {
                 dao.cadastrar(filme);
                 
                 response.sendRedirect("listarFilmes"); 
+                
+                break;
+                
+            case "/editar":
+                
+                Filmes filme2 = new Filmes();
+                FilmesDAO dao2 = new FilmesDAO();
+                
+                filme2.setTitulo(request.getParameter("titulo"));
+                filme2.setDescricao(request.getParameter("descricao"));
+                filme2.setAno(Integer.parseInt(request.getParameter("ano")));
+                filme2.setId_filme(Integer.parseInt(request.getParameter("filme")));
+                
+                dao2.atualizarFilme(filme2);
+            
+                response.sendRedirect("listarFilmes");
                 
                 break;
             
@@ -131,19 +151,23 @@ public class SakilaController extends HttpServlet {
         }
  
     }
+    
     private void editar(HttpServletRequest request, HttpServletResponse response) {
         
         try{
            
             Filmes filme = new Filmes();
             
-            int id_filme = Integer.parseInt(request.getParameter("filme"));
-            
             FilmesDAO dao = new FilmesDAO();
+            
+            int id_filme = Integer.parseInt(request.getParameter("filme"));
             
             filme = dao.selecionarFilmes(id_filme);
             
-            dao.atualizarFilme(filme);
+            request.setAttribute("titulo", filme.getTitulo());
+            request.setAttribute("descricao", filme.getDescricao());
+            request.setAttribute("ano", filme.getAno());
+            request.setAttribute("filme", filme.getId_filme());
             
             request.getRequestDispatcher("WEB-INF/jsp/editar.jsp").forward(request, response);
             
@@ -151,6 +175,23 @@ public class SakilaController extends HttpServlet {
             e.printStackTrace();
         }
  
+    }
+    
+    private void excluir(HttpServletRequest request, HttpServletResponse response) {
+        
+        try{
+        
+            int filme_id = Integer.parseInt(request.getParameter("filme"));
+            
+            FilmesDAO dao = new FilmesDAO();
+            dao.excluir(filme_id);
+            
+            response.sendRedirect("./listarFilmes");
+            
+        }catch(Exception e){
+           e.printStackTrace();
+        }
+        
     }
 
 }

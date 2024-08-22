@@ -9,18 +9,18 @@
         <title>Editar filme</title>
     </head>
     <body>
-        <form action="./editar" method="post" class="container">
+        <form action="./editar?filme=${filme}" method="post" class="container">
             <div class="input-group mb-3">
                 <span class="input-group-text" id="inputGroup-sizing-default">Título</span>
-                <input type="text" class="form-control" name="titulo" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default">
+                <input type="text" class="form-control" value="${titulo}" name="titulo" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default">
               </div>
             <div class="input-group mb-3">
                 <span class="input-group-text" id="inputGroup-sizing-default">Descrição</span>
-                <input type="text" class="form-control" name="descricao" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default">
+                <input type="text" class="form-control" value="${descricao}" name="descricao" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default">
               </div>
             <div class="input-group mb-3">
                 <span class="input-group-text" id="inputGroup-sizing-default">Ano</span>
-                <input type="text" class="form-control" name="ano" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default">
+                <input type="text" class="form-control" value="${ano}" name="ano" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default">
               </div>
               <button type="submit">Salvar</button>
         </form>
